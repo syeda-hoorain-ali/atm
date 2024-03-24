@@ -1,7 +1,8 @@
+#! /usr/bin/env node
+
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 import { createSpinner } from "nanospinner";
-
 import { handleTransition } from "./handlers.js";
 import { again, transitionType, userData } from "./prompts.js";
 

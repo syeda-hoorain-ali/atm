@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 import { createSpinner } from "nanospinner";
@@ -15,6 +16,7 @@ const welcome = async () => {
     title.stop();
 };
 const main = async () => {
+    // Prompt user to select a transaction type
     const transition = await transitionType();
     const message = await handleTransition(transition, balance);
     const spinner = createSpinner('Your transition is being processing...').start();
