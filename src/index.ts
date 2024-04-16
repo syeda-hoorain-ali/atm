@@ -29,7 +29,7 @@ const main = async () => {
     const transition = await transitionType();
     const message = await handleTransition(transition, balance);
 
-    const spinner = createSpinner('Your transition is being processing...').start();
+    const spinner = createSpinner('Your transaction is being processing...').start();
     await sleep(2000);
     
     // Display the result message of the transaction
@@ -54,6 +54,6 @@ const main = async () => {
 
 
 await welcome();
-await userData();
+await userData(balance);
 await main();
 
