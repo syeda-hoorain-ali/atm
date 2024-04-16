@@ -2,7 +2,7 @@
 export const validatePin = (input: string) => {
     const number = parseInt(input, 10);
 
-    if ((number <= 999) || (number > 9999) || (isNaN(number))) {
+    if ((isNaN(number))  || (input.trim().length !== 4)) {
         return `Please enter a valid pin.`;
     }
     return true;
@@ -33,7 +33,7 @@ export const validateAmount = (input: string) => {
 export const validateAccount = (input: string) => {
     const number = parseInt(input, 10);
 
-    if ((isNaN(number)) || (number <= 9999999999) || (number > 99999999999)) {
+    if ((isNaN(number)) || (input.trim().length !== 11)) {
         return `Please enter a valid account number.`;
     }
     return true;
