@@ -5,32 +5,28 @@ import { validateAmount, validateAccount } from "./validation.js"
 
 //* Function to handle withdraw
 export const handleWithdraw = async (balance: number) => {
-    const { amount } = await inquirer.prompt([
-        {
-            message: chalk.cyan("Enter the amount you like to withdraw: "),
-            name: "amount",
-            type: "input",
-            validate: validateAmount
-        },
-    ]);
-    if (amount > balance) { return undefined; }
-    balance -= amount;
-    return `Transaction successful. Withdrawn ${amount}. Updated balance: ${balance}.`;
+    const { amount } = await inquirer.prompt({
+        message: chalk.cyan("Enter the amount you like to withdraw: "),
+        name: "amount",
+        type: "input",
+        validate: validateAmount
+    });
+    if (parseFloat(amount) > balance) { return undefined; }
+    balance -= parseFloat(amount);
+    return `Transaction successful. Withdrawn ${amount.trim()}. Updated balance: ${balance}.`;
 }
 
 
 //* Function to handle deposit
 export const handleDeposit = async (balance: number) => {
-    const { amount } = await inquirer.prompt([
-        {
-            message: chalk.magenta("Enter the amount you like to deposit: "),
-            name: "amount",
-            type: "input",
-            validate: validateAmount
-        },
-    ]);
-    balance += amount;
-    return `Transaction successful. Deposited ${amount}. Updated balance: ${balance}.`;
+    const { amount } = await inquirer.prompt({
+        message: chalk.magenta("Enter the amount you like to deposit: "),
+        name: "amount",
+        type: "input",
+        validate: validateAmount
+    });
+    balance += parseFloat(amount);
+    return `Transaction successful. Deposited ${amount.trim()}. Updated balance: ${balance}.`;
 }
 
 
@@ -51,9 +47,9 @@ export const handleTransfer = async (balance: number) => {
         },
     ]);
 
-    if (amount > balance) return undefined;
-    balance -= amount;
-    return `Transaction successful. Transferred ${amount} to ${account}. Updated balance: ${balance}.`;
+    if (parseFloat(amount) > balance) return undefined;
+    balance -= parseFloat(amount);
+    return `Transaction successful. Transferred ${amount.trim()} to ${account.trim()}. Updated balance: ${balance}.`;
 }
 
 
